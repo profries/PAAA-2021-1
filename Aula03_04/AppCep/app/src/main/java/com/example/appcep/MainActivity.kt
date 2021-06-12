@@ -6,11 +6,11 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.appcep.retrofit.CepClientApi
+import com.example.appcep.retrofit.client.ProdutoClientApi
 
 class MainActivity : AppCompatActivity() {
-    val cepClientApi: CepClientApi by lazy {
-        CepClientApi()
+    val produtoClientApi: ProdutoClientApi by lazy {
+        ProdutoClientApi()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,16 @@ class MainActivity : AppCompatActivity() {
         val cepEdit = findViewById<EditText>(R.id.editTextCep)
         val textEstado = findViewById<TextView>(R.id.textEstado)
         val cep = cepEdit.text.toString()
-        cepClientApi.buscarCep(
+        produtoClientApi.buscarPorId(
+                cep,
+                onSucess = { produto ->
+                    textEstado.text = produto?.nome
+                },
+                onFail = { erro ->
+                    Toast.makeText(this, erro, Toast.LENGTH_SHORT).show()
+                }
+        )
+        /*cepClientApi.buscarCep(
             cep,
             onSucess = { endereco ->
                 textEstado.text = endereco?.uf
@@ -31,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             onFail = { erro ->
                 Toast.makeText(this, erro, Toast.LENGTH_SHORT).show()
             }
-        )
+        )*/
     }
 
 

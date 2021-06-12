@@ -1,6 +1,7 @@
-package com.example.appcep.retrofit
+package com.example.appcep.retrofit.client
 
 import com.example.appcep.model.Endereco
+import com.example.appcep.retrofit.AppRetrofit
 import com.example.appcep.retrofit.service.CepService
 import retrofit2.Call
 import retrofit2.Callback
