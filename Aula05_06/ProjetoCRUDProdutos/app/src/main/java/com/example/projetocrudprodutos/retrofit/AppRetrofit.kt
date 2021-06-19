@@ -4,8 +4,6 @@ import com.example.projetocrudprodutos.retrofit.service.ProdutoService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
-//private const val BASE_URL = "https://viacep.com.br"
 private const val BASE_URL = "http://10.0.2.2:3000"
 
 class AppRetrofit {

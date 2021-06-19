@@ -35,11 +35,6 @@ class MainActivity : AppCompatActivity(), ProdutoAdapter.OnItemClickListener {
         viewAdapter = ProdutoAdapter(listaProdutos)
         viewAdapter.onItemClickListener = this
 
-
-        listaProdutos.add(Produto(1,"Prod1",30.0))
-        listaProdutos.add(Produto(2,"Prod2",32.0))
-        listaProdutos.add(Produto(3,"Prod3",45.2))
-
         recyclerView = findViewById<RecyclerView>(R.id.recyclerView).apply {
 
             setHasFixedSize(true)
@@ -52,10 +47,10 @@ class MainActivity : AppCompatActivity(), ProdutoAdapter.OnItemClickListener {
 
     override fun onStart() {
         super.onStart()
-        loadProdutos();
+        carregaProdutos();
     }
 
-    private fun loadProdutos() {
+    private fun carregaProdutos() {
         produtoClientApi.listar(onSuccess = { produtos ->
             produtos?.let {
                 it.forEach { produto ->
